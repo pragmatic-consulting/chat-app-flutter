@@ -24,27 +24,15 @@ List demoChatMessages = [
     isSender: false,
   ),
   ChatMessage(
-    text: "Je veux avoir plus d'informations sur Eduka?",
+    text: "Je veux avoir plus d'informations ?",
     messageType: ChatMessageType.text,
     messageStatus: MessageStatus.viewed,
     isSender: true,
   ),
   ChatMessage(
-    text: "",
-    messageType: ChatMessageType.audio,
-    messageStatus: MessageStatus.viewed,
-    isSender: false,
-  ),
-  ChatMessage(
-    text: "",
+    text: "test",
     messageType: ChatMessageType.video,
     messageStatus: MessageStatus.viewed,
-    isSender: true,
-  ),
-  ChatMessage(
-    text: "Error happend",
-    messageType: ChatMessageType.text,
-    messageStatus: MessageStatus.not_sent,
     isSender: true,
   ),
   ChatMessage(

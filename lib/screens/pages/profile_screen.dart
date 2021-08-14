@@ -1,19 +1,18 @@
-import 'package:chatapp/models/SignupUser.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
-  // final SignupUser user;
-  // ProfileScreen(this.user);
   @override
   _ProfileScreen createState() => _ProfileScreen();
 }
 
 class _ProfileScreen extends State<ProfileScreen> {
+  String _name = '';
   @override
   Widget build(BuildContext context) {
+    _read();
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: buildAppBar(),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +26,7 @@ class _ProfileScreen extends State<ProfileScreen> {
                 height: 12.0,
               ),
               Text(
-                "Admin",
+                '${_name}',
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
@@ -35,22 +34,58 @@ class _ProfileScreen extends State<ProfileScreen> {
                 ),
               ),
               Text(
-                "role d'administration",
+                "Formateur référent",
                 style: TextStyle(
                   color: Colors.grey,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 12,
                 ),
+              ),
+              SizedBox(
+                height: 12.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  statWidget("Abonnés", "20"),
+                  statWidget("Cours", "55"),
+                  statWidget("eleves", "70"),
+                ],
               )
             ],
           ),
         ));
   }
 
-  AppBar buildAppBar() {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      title: Row(
-        children: [BackButton(), Text("Profil")],
-      ),
-    );
+  void _read() async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = '1';
+    final value = prefs.getString(key) ?? 'admin';
+    setState(() {
+      _name = value;
+    });
   }
+}
+
+Widget statWidget(String title, String stat) {
+  return Expanded(
+    child: Column(
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 14.0,
+          ),
+        ),
+        Text(
+          stat,
+          style: TextStyle(
+            fontSize: 12.0,
+          ),
+        ),
+      ],
+    ),
+  );
 }

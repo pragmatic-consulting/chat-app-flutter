@@ -4,6 +4,7 @@ import 'package:chatapp/models/SignupUser.dart';
 import 'package:chatapp/screens/chats/chats_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SigninOrSignupScreen extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -63,14 +64,20 @@ class SigninOrSignupScreen extends StatelessWidget {
 
     if (form.validate()) {
       form.save();
-      print('New user saved with signup data:\n');
-      print(user.toJson());
+      _save(user.name);
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ChatsScreen(user),
+          builder: (context) => ChatsScreen(),
         ),
       );
     }
+  }
+
+  _save(String _name) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = '1';
+    final value = _name;
+    prefs.setString(key, value);
   }
 }

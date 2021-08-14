@@ -1,8 +1,7 @@
-import 'package:chatapp/components/filled_outline_button.dart';
-import 'package:chatapp/constants.dart';
 import 'package:chatapp/models/Chat.dart';
 import 'package:chatapp/screens/messages/message_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'chat_card.dart';
 
@@ -11,37 +10,30 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          padding: EdgeInsets.fromLTRB(
-              kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
-          color: kPrimaryColor,
-          child: Row(
-            children: [
-              FillOutlineButton(press: () {}, text: "Messages récents"),
-              SizedBox(width: kDefaultPadding),
-              FillOutlineButton(
-                press: () {},
-                text: "Active",
-                isFilled: false,
-              ),
-            ],
-          ),
-        ),
         Expanded(
           child: ListView.builder(
             itemCount: chatsData.length,
             itemBuilder: (context, index) => ChatCard(
-              chat: chatsData[index],
-              press: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MessagesScreen(),
-                ),
-              ),
-            ),
+                chat: chatsData[index],
+                press: () => {
+                      _save(index),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MessagesScreen(),
+                        ),
+                      ),
+                    }),
           ),
         ),
       ],
     );
+  }
+
+  _save(int _index) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = '2';
+    final value = _index;
+    prefs.setInt(key, value);
   }
 }

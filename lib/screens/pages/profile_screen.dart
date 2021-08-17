@@ -50,7 +50,7 @@ class _ProfileScreen extends State<ProfileScreen> {
                 children: [
                   statWidget("Abonnés", "20"),
                   statWidget("Cours", "55"),
-                  statWidget("eleves", "70"),
+                  statWidget("Apprenants", "70"),
                 ],
               )
             ],

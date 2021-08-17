@@ -14,16 +14,16 @@ class Chat {
 //chat mockdata for testing
 List chatsData = [
   Chat(
-    name: "JD",
-    lastMessage: "...",
-    image: "assets/images/user.png",
+    name: "John Doe",
+    lastMessage: "Occupé",
+    image: "assets/images/user_profilev2.png",
     time: "3m ago",
     isActive: false,
   ),
   Chat(
-    name: "AE",
-    lastMessage: "...",
-    image: "assets/images/user_2.png",
+    name: "Jane Doe",
+    lastMessage: "Disponible",
+    image: "assets/images/user_femalev2.png",
     time: "8m ago",
     isActive: true,
   ),

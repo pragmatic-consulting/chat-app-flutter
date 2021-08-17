@@ -24,27 +24,15 @@ List demoChatMessages = [
     isSender: false,
   ),
   ChatMessage(
-    text: "Je veux avoir plus d'informations ?",
+    text: "Pourrais je avoir plus d'information ?",
     messageType: ChatMessageType.text,
     messageStatus: MessageStatus.viewed,
     isSender: true,
   ),
   ChatMessage(
-    text: "test",
-    messageType: ChatMessageType.video,
-    messageStatus: MessageStatus.viewed,
-    isSender: true,
-  ),
-  ChatMessage(
-    text: "OUI !!",
+    text: "Merci de me répondre",
     messageType: ChatMessageType.text,
     messageStatus: MessageStatus.viewed,
     isSender: false,
-  ),
-  ChatMessage(
-    text: "Je suis ravi d'avoir aider 😃!",
-    messageType: ChatMessageType.text,
-    messageStatus: MessageStatus.not_view,
-    isSender: true,
   ),
 ];

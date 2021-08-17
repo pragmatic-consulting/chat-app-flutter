@@ -1,5 +1,7 @@
 import 'package:chatapp/constants.dart';
+import 'package:chatapp/screens/blog/blogListScreen.dart';
 import 'package:chatapp/screens/pages/profile_screen.dart';
+import 'package:chatapp/screens/quiz/quiz_screen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +13,12 @@ class ChatsScreen extends StatefulWidget {
 }
 
 class _ChatsScreenState extends State<ChatsScreen> {
-  final List<Widget> _tabItems = [Body(), Body(), Body(), ProfileScreen()];
+  final List<Widget> _tabItems = [
+    BlogListScreen(),
+    QuizScreen(),
+    Body(),
+    ProfileScreen()
+  ];
   _ChatsScreenState();
 
   int _page = 0;
@@ -23,13 +30,13 @@ class _ChatsScreenState extends State<ChatsScreen> {
         //body: Body(),
         body: _tabItems[_page],
         bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.white.withOpacity(0),
           color: kPrimaryColor,
           key: _bottomNavigationKey,
           items: <Widget>[
-            Icon(Icons.add, color: Colors.white, size: 30),
+            Icon(Icons.article, color: Colors.white, size: 30),
+            Icon(Icons.quiz, color: Colors.white, size: 30),
             Icon(Icons.chat_bubble, color: Colors.white, size: 30),
-            Icon(Icons.people, color: Colors.white, size: 30),
             Icon(Icons.portrait, color: Colors.white, size: 30),
           ],
           onTap: (index) {
@@ -52,14 +59,14 @@ class _ChatsScreenState extends State<ChatsScreen> {
       return AppBar(
         automaticallyImplyLeading: false,
         title: Row(
-          children: [BackButton(), Text("Contact")],
+          children: [BackButton(), Text("Conversations")],
         ),
       );
     } else if (_page == 0) {
       return AppBar(
         automaticallyImplyLeading: false,
         title: Row(
-          children: [BackButton(), Text("Ajout")],
+          children: [BackButton(), Text("Articles")],
         ),
       );
     }
@@ -67,7 +74,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
     return AppBar(
       automaticallyImplyLeading: false,
       title: Row(
-        children: [BackButton(), Text("Conversations")],
+        children: [BackButton(), Text("Quiz")],
       ),
     );
   }

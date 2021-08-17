@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants.dart';
 
@@ -73,5 +74,12 @@ class ChatInputField extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _save(String _name) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = '3';
+    final value = _name;
+    prefs.setString(key, value);
   }
 }

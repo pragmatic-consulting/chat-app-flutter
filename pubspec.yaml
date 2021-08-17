@@ -24,15 +24,20 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   cupertino_icons: ^1.0.2
-
-  # allows us to easily use any of the 977 fonts from fonts.google.com
   google_fonts: ^2.0.0
-
   curved_navigation_bar: ^1.0.1 
-
   shared_preferences: ^2.0.6
+  transparent_image: ^2.0.0
+  cached_network_image: ^3.1.0
+  provider: ^5.0.0
+  dio: ^4.0.0
+  enum_to_string: ^2.0.1
+  equatable: ^2.0.3
+  flutter_hooks: ^0.17.0
+  hooks_riverpod: ^0.14.0
+  html_character_entities: ^1.0.0+1
+  meta: ^1.2.4
 
 
 dev_dependencies:
